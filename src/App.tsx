@@ -61,11 +61,51 @@ export class App extends Component<any, AppState> {
         return patchedPokemons;
     };
 
+    filterPokemons = (filterValue: string) => {
+        const { allPokemons } = this.state;
+        const filteredPokemons = allPokemons.filter(
+            (pokemon: PokemonSchema) => {
+                return (
+                    pokemon.name &&
+                    pokemon.name
+                        .toLowerCase()
+                        .includes(filterValue.toLowerCase())
+                );
+            }
+        );
+        return filteredPokemons;
+    };
+
+    handleClick = (pokemonName: string) => {
+        const searchedPokemons = this.filterPokemons(pokemonName);
+
+        this.setState({
+            ...this.state,
+            selectedPokemon: searchedPokemons[0],
+        });
+    };
+
+    handleInputChange = (inputValue: string) => {
+        const { allPokemons } = this.state;
+        const searchedPokemons = this.filterPokemons(inputValue);
+
+        this.setState({
+            ...this.state,
+            searchField: inputValue,
+            searchedPokemons: searchedPokemons,
+        });
+    };
+
     render() {
         return (
             <div className='App'>
                 <h1>Pokedex</h1>
-                <Pokedex searchedPokemons={this.state.searchedPokemons} />
+                <Pokedex
+                    searchedPokemons={this.state.searchedPokemons}
+                    handleInputChange={this.handleInputChange}
+                    selectedPokemon={this.state.selectedPokemon}
+                    handleClick={this.handleClick}
+                />
             </div>
         );
     }

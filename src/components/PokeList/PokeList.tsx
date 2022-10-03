@@ -1,13 +1,10 @@
 import React from 'react';
 import PokeCard from '../PokeCard/PokeCard';
 import './PokeList.css';
-import {
-    UnpatchedPokemonSchema,
-    PokemonSpritesSchema,
-    PokemonSchema,
-} from '../../types/PokemonSchema';
+import { PokemonSchema } from '../../types/PokemonSchema';
 interface PokeListProps {
     searchedPokemons: PokemonSchema[];
+    handleClick: (inputValue: string) => void;
 }
 
 function PokeList(props: PokeListProps) {
@@ -21,6 +18,7 @@ function PokeList(props: PokeListProps) {
                                 key={id}
                                 name={name}
                                 spriteUrl={sprites && sprites.normal}
+                                handleClick={props.handleClick}
                             />
                         )
                     );

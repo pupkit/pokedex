@@ -1,9 +1,20 @@
 import React from 'react';
 import './SearchBox.css';
 
-function SearchBox() {
+interface SearchBoxProps {
+    handleInputChange: (inputValue: string) => void;
+}
+
+function SearchBox({ handleInputChange }: SearchBoxProps) {
     return (
-        <input type='search' className='search' placeholder='Search Pokemon' />
+        <input
+            type='search'
+            className='search'
+            placeholder='Search Pokemon'
+            onChange={(e) => {
+                handleInputChange(e.target.value);
+            }}
+        />
     );
 }
 
