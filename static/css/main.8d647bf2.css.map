@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.8d647bf2.css","mappings":"AAAA,KACI,wBAAyB,CACzB,aACJ,CAEA,KACI,iBACJ","sources":["App.css"],"sourcesContent":["body {\r\n    background-color: #dbf6e9;\r\n    color: #162447;\r\n}\r\n\r\n.App {\r\n    text-align: center;\r\n}"],"names":[],"sourceRoot":""}
