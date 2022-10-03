@@ -1,15 +1,30 @@
 import React from 'react';
 import PokeCard from '../PokeCard/PokeCard';
 import './PokeList.css';
+import {
+    UnpatchedPokemonSchema,
+    PokemonSpritesSchema,
+    PokemonSchema,
+} from '../../types/PokemonSchema';
+interface PokeListProps {
+    searchedPokemons: PokemonSchema[];
+}
 
-function PokeList() {
+function PokeList(props: PokeListProps) {
     return (
         <div className='pokelist'>
-            <PokeCard name='pikachu' />
-            <PokeCard name='bulbasaur' />
-            <PokeCard name='ivysaur' />
-            <PokeCard name='venasaur' />
-            <PokeCard name='charizard' />
+            {props.searchedPokemons &&
+                props.searchedPokemons.map(({ id, name, sprites }) => {
+                    return (
+                        name && (
+                            <PokeCard
+                                key={id}
+                                name={name}
+                                spriteUrl={sprites && sprites.normal}
+                            />
+                        )
+                    );
+                })}
         </div>
     );
 }
