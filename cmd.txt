@@ -1,0 +1,1 @@
+npx create-react-app pokedex --template typescript
